@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "email": "yoel.wildantop@gmail.com",
+      "username": "yoel",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "id": 1
+    },
+    {
+      "email": "bambang@gmail.com",
+      "username": "bambang",
+      "password": "09876543",
+      "confirmPassword": "09876543",
+      "id": 2
+    }
+  ]
+}
