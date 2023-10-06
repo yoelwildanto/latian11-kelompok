@@ -1,9 +1,9 @@
 import './App.css';
-import { Routes,Route, Router } from 'react-router-dom';
+import { Routes,Route } from 'react-router-dom';
 import { HomePage } from './components/HomePage';
 import Login from './components/login';
 import Timeline from './components/timeline';
-import Register from './components/register';
+import Register from './components/UserRegistration';
 
 function App() {
   return (

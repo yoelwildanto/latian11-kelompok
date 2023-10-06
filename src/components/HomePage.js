@@ -1,8 +1,9 @@
-import Register from "./register"
+import Register from "./UserRegistration"
+import { Box } from "@chakra-ui/react"
 export const HomePage = () => {
     return (
-        <div>
+        <Box py={"20px"} >
             <Register/>
-        </div>
+        </Box>
     )
 }

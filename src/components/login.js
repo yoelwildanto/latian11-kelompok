@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Button, FormControl, FormErrorMessage, FormLabel, Input, Stack } from "@chakra-ui/react";
 
 const validationSchema = Yup.object({
   usernameOrEmail: Yup.string().required("Username or Email is required"),
@@ -12,18 +13,23 @@ const validationSchema = Yup.object({
 
 function Login() {
   const navigate = useNavigate();
-//   const [expression, setExpression] = useState('');
-
 
   const handleSubmit = (values, { resetForm }) => {
-    axios.get("http://localhost:3001/users", { params: { usernameOrEmail: values.usernameOrEmail, password: values.password } }).then((response) => {
-      if (response.data.length === 1) {
-        resetForm();
-        navigate("/timeline");
-      } else {
-        alert("Invalid username/email or password.");
-      }
-    });
+    axios
+      .get("http://localhost:3001/users", {
+        params: {
+          $or: [{ email: values.usernameOrEmail }, { username: values.usernameOrEmail }],
+          password: values.password,
+        },
+      })
+      .then((response) => {
+        if (response.data.length === 1) {
+          resetForm();
+          navigate("/timeline");
+        } else {
+          alert("Invalid username/email or password.");
+        }
+      });
   };
 
   const handleToGoRegister = () => {
@@ -31,25 +37,39 @@ function Login() {
   };
 
   return (
-    <div>
-      <button onClick={handleToGoRegister}>register</button>
+    <Stack spacing={3}>
+      <Button onClick={handleToGoRegister}>Register</Button>
       <h2>Login</h2>
-      <Formik initialValues={{ usernameOrEmail: "", password: "" }} validationSchema={validationSchema} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={{ usernameOrEmail: "", password: "" }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
         <Form>
-          <div>
-            <label>Username or Email:</label>
-            <Field type="text" name="usernameOrEmail" />
-            <ErrorMessage name="usernameOrEmail" component="div" className="error" />
-          </div>
-          <div>
-            <label>Password:</label>
-            <Field type="password" name="password" />
-            <ErrorMessage name="password" component="div" className="error" />
-          </div>
-          <button type="submit">Login</button>
+          <Field name="usernameOrEmail">
+            {({ field, form }) => (
+              <FormControl isInvalid={form.errors.usernameOrEmail && form.touched.usernameOrEmail}>
+                <FormLabel htmlFor="usernameOrEmail">Username or Email</FormLabel>
+                <Input {...field} id="usernameOrEmail" placeholder="Username or Email" />
+                <FormErrorMessage>{form.errors.usernameOrEmail}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+          <Field name="password">
+            {({ field, form }) => (
+              <FormControl isInvalid={form.errors.password && form.touched.password}>
+                <FormLabel htmlFor="password">Password</FormLabel>
+                <Input {...field} id="password" type="password" placeholder="Password" />
+                <FormErrorMessage>{form.errors.password}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+          <Button type="submit" colorScheme="teal">
+            Login
+          </Button>
         </Form>
       </Formik>
-    </div>
+    </Stack>
   );
 }
 
