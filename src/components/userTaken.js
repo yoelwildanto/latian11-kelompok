@@ -1,10 +1,10 @@
 // src/components/Register.js
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Button, FormControl, FormErrorMessage, FormLabel, Input, Stack, Text } from "@chakra-ui/react";
+import { Button, FormControl, FormErrorMessage, FormLabel, Input, Stack } from "@chakra-ui/react";
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Email is required"),
@@ -19,22 +19,36 @@ const validationSchema = Yup.object({
 
 function Register() {
   const navigate = useNavigate();
+  const [isEmailTaken, setIsEmailTaken] = useState(false);
+  const [isUsernameTaken, setIsUsernameTaken] = useState(false);
 
   const handleSubmit = (values, { resetForm }) => {
-    axios.post("http://localhost:3001/users", values).then(() => {
-      resetForm();
-      navigate("/timeline");
+    // Check if email is already taken
+    axios.get("http://localhost:3001/users?email=" + values.email).then((response) => {
+      if (response.data.length > 0) {
+        setIsEmailTaken(true);
+        return;
+      }
+
+      // Check if username is already taken
+      axios.get("http://localhost:3001/users?username=" + values.username).then((response) => {
+        if (response.data.length > 0) {
+          setIsUsernameTaken(true);
+          return;
+        }
+
+        // If neither email nor username is taken, proceed with registration
+        axios.post("http://localhost:3001/users", values).then(() => {
+          resetForm();
+          navigate("/timeline");
+        });
+      });
     });
   };
 
-  const handleToGoLogin = () => {
-    navigate('/login');
-  };
-
   return (
-    <Stack py={"15px"} px={"40px"} m={"auto"} h={"100%"} w={"300px"} spacing={3}>
-      <Button colorScheme="green" mx={"auto"} w={"100px"} onClick={handleToGoLogin}>Login</Button>
-      <Text fontWeight={800}>Register</Text>
+    <Stack spacing={3}>
+      <h2>Register</h2>
       <Formik
         initialValues={{ email: "", username: "", password: "", confirmPassword: "" }}
         validationSchema={validationSchema}
@@ -47,22 +61,28 @@ function Register() {
                 <FormLabel htmlFor="email">Email</FormLabel>
                 <Input {...field} id="email" placeholder="Email" />
                 <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                {isEmailTaken && (
+                  <FormErrorMessage>This email is already registered.</FormErrorMessage>
+                )}
               </FormControl>
             )}
           </Field>
           <Field name="username">
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.username && form.touched.username}>
-                <FormLabel mt={"10px"} htmlFor="username">Username</FormLabel>
+                <FormLabel htmlFor="username">Username</FormLabel>
                 <Input {...field} id="username" placeholder="Username" />
                 <FormErrorMessage>{form.errors.username}</FormErrorMessage>
+                {isUsernameTaken && (
+                  <FormErrorMessage>This username is already taken.</FormErrorMessage>
+                )}
               </FormControl>
             )}
           </Field>
           <Field name="password">
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.password && form.touched.password}>
-                <FormLabel mt={"10px"} htmlFor="password">Password</FormLabel>
+                <FormLabel htmlFor="password">Password</FormLabel>
                 <Input {...field} id="password" type="password" placeholder="Password" />
                 <FormErrorMessage>{form.errors.password}</FormErrorMessage>
               </FormControl>
@@ -71,13 +91,13 @@ function Register() {
           <Field name="confirmPassword">
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.confirmPassword && form.touched.confirmPassword}>
-                <FormLabel mt={"10px"} htmlFor="confirmPassword">Confirm Password</FormLabel>
+                <FormLabel htmlFor="confirmPassword">Confirm Password</FormLabel>
                 <Input {...field} id="confirmPassword" type="password" placeholder="Confirm Password" />
                 <FormErrorMessage>{form.errors.confirmPassword}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
-          <Button  ml={"110px"} w={"50%"} my={"10px"} type="submit" colorScheme="teal">
+          <Button type="submit" colorScheme="teal">
             Register
           </Button>
         </Form>

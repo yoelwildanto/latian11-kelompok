@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@chakra-ui/react";
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Email is required"),
@@ -29,7 +30,7 @@ function Register() {
 
   return (
     <div>
-      <button onClick={handleToGoLogin}>Login</button>
+      <Button onClick={handleToGoLogin}>Login</Button>
       <h2>Register</h2>
       <Formik initialValues={{ email: "", username: "", password: "", confirmPassword: "" }} validationSchema={validationSchema} onSubmit={handleSubmit}>
         <Form>

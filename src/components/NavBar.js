@@ -21,7 +21,7 @@ function Navbar() {
   }, []);
 
   const updateCount = () => {
-    axios.get("http://localhost:3000/users").then((response) => {
+    axios.get("http://localhost:3001/users").then((response) => {
       setUserCount(response.data.length);
     });
   };
