@@ -26,8 +26,13 @@ function Login() {
     });
   };
 
+  const handleToGoRegister = () => {
+    navigate('/register');
+  };
+
   return (
     <div>
+      <button onClick={handleToGoRegister}>register</button>
       <h2>Login</h2>
       <Formik initialValues={{ usernameOrEmail: "", password: "" }} validationSchema={validationSchema} onSubmit={handleSubmit}>
         <Form>
