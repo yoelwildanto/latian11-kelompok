@@ -15,25 +15,11 @@
       "id": 2
     },
     {
-      "email": "yoel.wildantop@gmail.com",
-      "username": "yoel",
-      "password": "12345678",
-      "confirmPassword": "12345678",
+      "email": "miki@gmail.com",
+      "username": "miki",
+      "password": "09876543",
+      "confirmPassword": "09876543",
       "id": 3
-    },
-    {
-      "email": "yoel.wildantop@gmail.com",
-      "username": "yoel",
-      "password": "12345678",
-      "confirmPassword": "12345678",
-      "id": 4
-    },
-    {
-      "email": "bambang@gmail.com",
-      "username": "bambang",
-      "password": "12345678",
-      "confirmPassword": "12345678",
-      "id": 5
     }
   ]
 }
