@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "name": "Yoel Wildanto",
+      "email": "yoel.wildantop@gmail.com",
+      "password": "Aa1!qwer",
+      "id": 1
+    },
+    {
+      "name": "Yoel Wildanto",
+      "email": "yoel.wildantop@gmail.com",
+      "password": "As!1qwer",
+      "id": 2
+    },
+    {
+      "name": "Yoel Wildanto",
+      "email": "yoel.wildantop@gmail.com",
+      "password": "aA1!qwertrt",
+      "id": 3
+    },
+    {
+      "name": "Yoel Wildanto",
+      "email": "yoel.wildantop@gmail.com",
+      "password": "aA1!qwea",
+      "id": 4
+    }
+  ]
+}
