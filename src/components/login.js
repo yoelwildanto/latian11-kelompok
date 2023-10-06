@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Button, FormControl, FormErrorMessage, FormLabel, Input, Stack } from "@chakra-ui/react";
+import { Button, FormControl, FormErrorMessage, FormLabel, Input, Stack, Text } from "@chakra-ui/react";
 
 const validationSchema = Yup.object({
   usernameOrEmail: Yup.string().required("Username or Email is required"),
@@ -18,7 +18,8 @@ function Login() {
     axios
       .get("http://localhost:3001/users", {
         params: {
-          $or: [{ email: values.usernameOrEmail }, { username: values.usernameOrEmail }],
+          // $or: [{ email: values.email }, { username: values.usernameOrEmail }],
+          email: values.email,
           password: values.password,
         },
       })
@@ -37,9 +38,9 @@ function Login() {
   };
 
   return (
-    <Stack spacing={3}>
-      <Button onClick={handleToGoRegister}>Register</Button>
-      <h2>Login</h2>
+    <Stack borderRadius={"20px"} bg={"pink"} py={"15px"} px={"40px"} m={"auto"} h={"100%"} w={"300px"} spacing={3}>
+      <Button colorScheme="green" mx={"auto"} w={"100px"} onClick={handleToGoRegister}>Register</Button>
+      <Text fontWeight={800}>Login</Text>
       <Formik
         initialValues={{ usernameOrEmail: "", password: "" }}
         validationSchema={validationSchema}
@@ -58,13 +59,13 @@ function Login() {
           <Field name="password">
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.password && form.touched.password}>
-                <FormLabel htmlFor="password">Password</FormLabel>
+                <FormLabel mt={"10px"} htmlFor="password">Password</FormLabel>
                 <Input {...field} id="password" type="password" placeholder="Password" />
                 <FormErrorMessage>{form.errors.password}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
-          <Button type="submit" colorScheme="teal">
+          <Button  type="submit" colorScheme="teal">
             Login
           </Button>
         </Form>

@@ -32,7 +32,7 @@ function Register() {
   };
 
   return (
-    <Stack py={"15px"} px={"40px"} m={"auto"} h={"100%"} w={"300px"} spacing={3}>
+    <Stack borderRadius={"20px"} bg={"pink"} py={"15px"} px={"40px"} m={"auto"} h={"100%"} w={"300px"} spacing={3}>
       <Button colorScheme="green" mx={"auto"} w={"100px"} onClick={handleToGoLogin}>Login</Button>
       <Text fontWeight={800}>Register</Text>
       <Formik
