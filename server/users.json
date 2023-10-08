@@ -20,6 +20,20 @@
       "password": "09876543",
       "confirmPassword": "09876543",
       "id": 3
+    },
+    {
+      "email": "aa@gmail.com",
+      "username": "aa",
+      "password": "asdfghjkl",
+      "confirmPassword": "asdfghjkl",
+      "id": 4
+    },
+    {
+      "email": "yoel.wildantop@gmail.com",
+      "username": "yoel1",
+      "password": "qwertyuiop",
+      "confirmPassword": "qwertyuiop",
+      "id": 5
     }
   ]
 }
