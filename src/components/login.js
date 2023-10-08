@@ -18,8 +18,8 @@ function Login() {
     axios
       .get("http://localhost:3001/users", {
         params: {
-          // $or: [{ email: values.email }, { username: values.usernameOrEmail }],
-          email: values.email,
+          $or: [{ email: values.usernameOrEmail }, { username: values.usernameOrEmail }],
+          // email: values.email,
           password: values.password,
         },
       })
@@ -38,7 +38,8 @@ function Login() {
   };
 
   return (
-    <Stack borderRadius={"20px"} bg={"pink"} py={"15px"} px={"40px"} m={"auto"} h={"100%"} w={"300px"} spacing={3}>
+    <Stack boxShadow={"2xl"} border={"2px outset red"}
+    borderRadius={"20px"} bg={"EEEDED"} py={"15px"} px={"40px"} m={"auto"} h={"100%"} w={"300px"} spacing={3}>
       <Button colorScheme="green" mx={"auto"} w={"100px"} onClick={handleToGoRegister}>Register</Button>
       <Text fontWeight={800}>Login</Text>
       <Formik
@@ -65,7 +66,7 @@ function Login() {
               </FormControl>
             )}
           </Field>
-          <Button  type="submit" colorScheme="teal">
+          <Button  mt={"10px"} type="submit" colorScheme="teal">
             Login
           </Button>
         </Form>
