@@ -20,6 +20,48 @@
       "password": "09876543",
       "confirmPassword": "09876543",
       "id": 3
+    },
+    {
+      "email": "aa@gmail.com",
+      "username": "aa",
+      "password": "asdfghjkl",
+      "confirmPassword": "asdfghjkl",
+      "id": 4
+    },
+    {
+      "email": "yoel.wildantop@gmail.com",
+      "username": "yoel1",
+      "password": "qwertyuiop",
+      "confirmPassword": "qwertyuiop",
+      "id": 5
+    },
+    {
+      "email": "harijati@gmail.com",
+      "username": "harijati",
+      "password": "qwertyuiop",
+      "confirmPassword": "qwertyuiop",
+      "id": 6
+    },
+    {
+      "email": "kiki@gmail.com",
+      "username": "kiki",
+      "password": "1qazxsw2",
+      "confirmPassword": "1qazxsw2",
+      "id": 7
+    },
+    {
+      "email": "koko@gmail.com",
+      "username": "koko",
+      "password": "09876543",
+      "confirmPassword": "09876543",
+      "id": 8
+    },
+    {
+      "email": "kaka@gmail.com",
+      "username": "kaka",
+      "password": "pl,mkoijn",
+      "confirmPassword": "pl,mkoijn",
+      "id": 9
     }
   ]
 }
