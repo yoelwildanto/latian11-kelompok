@@ -1,4 +1,3 @@
-// src/components/Login.js
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -12,8 +11,6 @@ const validationSchema = Yup.object({
 
 function Login() {
   const navigate = useNavigate();
-//   const [expression, setExpression] = useState('');
-
 
   const handleSubmit = (values, { resetForm }) => {
     axios.get("http://localhost:3001/users", { params: { usernameOrEmail: values.usernameOrEmail, password: values.password } }).then((response) => {
