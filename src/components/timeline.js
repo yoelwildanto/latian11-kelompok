@@ -1,9 +1,11 @@
 import React from "react";
+import Sidebar from "../Sibar";
+import "../App.css"
 
 function Timeline() {
   return (
-    <div>
-      <h2>Timeline</h2>
+    <div className="app">
+      <Sidebar/>
     </div>
     )
     }
