@@ -1,59 +1,43 @@
 import React, { useState } from "react";
 import "./TweetBox.css";
-// import { Avatar, Button } from "@mui/material";
-import { Button, IconButton } from "@chakra-ui/react";
-// import db from "./firebase";
+import { Button, IconButton, Text } from "@chakra-ui/react";
 import axios from "axios";
-// import foto from "./asset/logo_Robin.png"
 
-function TweetBox({onTweet}) {
-  // const [tweetMessage, setTweetMessage] = useState("");
-  // const [tweetImage, setTweetImage] = useState("");
+function TweetBox({loggedInUser}) {
 
-  const [text, setText] = useState('');
-  const [tweets, setTweets] = useState([]);
+  // const [text, setText] = useState('');
+  const [tweetText, setTweetText] = useState("");
+  const handleTweetSubmit = () => {
+    const newTweet = {
+      text: tweetText,
+      username: loggedInUser,
+      timestamp: new Date().toISOString(),
+    };
+    axios.post("http://localhost:3002/tweets", newTweet)
+    .then((response) => {
 
+    });
 
-  const handleTweet = () => {
-    if (text) {
-      onTweet(text);
-      setText('');
-    }
+  setTweetText("");
   };
-  // const handleTweet = (text) => {
-  //   axios.post('http://localhost:3002/tweets', { text }) 
-  //     .then((response) => {
-  //       setTweets([response.data, ...tweets]);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error posting tweet:', error);
-  //     });
-  //   };
+  
 
+  const username = localStorage.getItem("loggedInUser");
 
   return (
     <div className="tweetBox">
       <form>
         <div className="tweetBox__input">
-          {/* <Avatar src={foto}/> */}
+          <Text pt={"3px"} fontWeight={600}>{username}</Text>
           <input
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            value={tweetText}
+            onChange={(e) => setTweetText(e.target.value)}
             placeholder="What's happening?"
-            // type="text"
           />
         </div>
-        {/* <input
-          // value={tweetImage}
-
-        //   onChange={(e) => setTweetImage(e.target.value)}
-          className="tweetBox__imageInput"
-          placeholder="Optional: Enter image URL"
-          type="text"
-        /> */}
-
+   
         <Button
-          onClick={handleTweet}
+          onClick={handleTweetSubmit}
 
           type="submit"
           className="tweetBox__tweetButton"

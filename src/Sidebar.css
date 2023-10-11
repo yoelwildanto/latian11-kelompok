@@ -14,6 +14,8 @@
     font-size: 30px !important;
     margin-left: 20px;
     margin-bottom: 20px;
+    /* transform: rotate(220); */
+    rotate: 200deg;
   }
   
   .sidebar__tweet {

@@ -1,4 +1,3 @@
-// src/components/Login.js
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -26,6 +25,8 @@ function Login() {
       .then((response) => {
         if (response.data.length === 1) {
           resetForm();
+          const username = response.data[0].username; // Extract the username
+          localStorage.setItem("loggedInUser", username);
           navigate("/timeline");
         } else {
           alert("Invalid username/email or password.");

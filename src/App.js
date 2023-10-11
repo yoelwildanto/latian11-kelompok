@@ -6,11 +6,13 @@ import Timeline from './components/timeline';
 import Register from './components/UserRegistration';
 // import Navbar from './components/NavBar';
 import CobaNavbar from './components/cobaNavbar';
+import TweetContextProvider from './Context/Context';
 
 function App() {
   return (
     <div className="App">
       {/* <Router> */}
+      <TweetContextProvider>
       <CobaNavbar/>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
@@ -18,6 +20,7 @@ function App() {
         <Route path='/timeline' element={<Timeline/>}/>
         <Route path='/register' element={<Register/>}/>
       </Routes>
+      </TweetContextProvider>
       {/* </Router> */}
     </div>
   );
