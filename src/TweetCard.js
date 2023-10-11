@@ -31,6 +31,8 @@ function TweetCard({ username, text, timestamp }) {
       <Text fontWeight={600} p={"10px"}>{text}</Text>
       {/* <Text>Posted at: {new Date(timestamp).toLocaleString()}</Text> */}
       {/* <Button mx={"5px"} leftIcon={<AiOutlineEdit />} colorScheme="teal" size="xs" onClick={handleEdit}>
+
+      <Button mx={"5px"} leftIcon={<AiOutlineEdit />} colorScheme="teal" size="xs" onClick={onEdit}>
         Edit
       </Button>
       <Button  leftIcon={<BsTrash />} colorScheme="red" size="xs" onClick={handleDelete}>

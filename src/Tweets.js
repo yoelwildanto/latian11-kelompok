@@ -1,6 +1,7 @@
 // src/components/Timeline.js
 import React from 'react';
 import { Box, Text } from "@chakra-ui/react"
+
 import TweetCard from './TweetCard';
 
 
@@ -27,6 +28,7 @@ function Timeline({ tweets }) {
       <Box p={"10px 5px"} >
         {reversedTweets.map((tweet, index) => (
        
+
         <TweetCard key={index} name={tweet.name}
         username={tweet.username} text={tweet.text}
         // onDelete={() => handleDelete(tweet.id)}
@@ -34,6 +36,7 @@ function Timeline({ tweets }) {
           />
 
         ))}
+
       </Box>
     </div>
   );
