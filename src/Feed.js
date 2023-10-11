@@ -43,6 +43,7 @@ function Feed() {
       <TweetBox onTweet={handleTweet}/>
 
       {/* <FlipMove> */}
+
         {/* {posts.map((post) => (
           <Post
             key={post.text}
@@ -56,6 +57,7 @@ function Feed() {
         ))} */}
         <Timeline tweets={tweets}/>
       {/* </FlipMove> */}
+
     </div>
   );
 }

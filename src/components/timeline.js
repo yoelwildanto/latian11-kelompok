@@ -8,6 +8,7 @@ function Timeline() {
     <div className="app">
       <Sidebar/>
       <Feed/>
+
     </div>
     )
     }

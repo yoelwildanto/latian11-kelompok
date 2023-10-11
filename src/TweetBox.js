@@ -30,6 +30,7 @@ function TweetBox({onTweet}) {
   //     });
   //   };
 
+
   return (
     <div className="tweetBox">
       <form>
@@ -44,6 +45,7 @@ function TweetBox({onTweet}) {
         </div>
         {/* <input
           // value={tweetImage}
+
         //   onChange={(e) => setTweetImage(e.target.value)}
           className="tweetBox__imageInput"
           placeholder="Optional: Enter image URL"
@@ -52,6 +54,7 @@ function TweetBox({onTweet}) {
 
         <Button
           onClick={handleTweet}
+
           type="submit"
           className="tweetBox__tweetButton"
         >
