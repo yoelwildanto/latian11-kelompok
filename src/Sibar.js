@@ -37,8 +37,8 @@ const Sidebar = () => {
         <SidebarOption  Icon={CgMoreO} text="More"/>
       
 
-        <Button colorScheme="green" mt={"40px"} w={"100%"} color={"white"} bg={"twitter.400"}>Tweet</Button>
-        <Button onClick={handleLogout}>Logout</Button>
+        <Button colorScheme="green" mt={"40px"} w={"100%"} color={"white"} bg={"green.400"}>Tweet</Button>
+        <Button color={"white"} bg={"red.600"} mt={"10px"} onClick={handleLogout}>Logout</Button>
 
     </div>
   )
