@@ -1,29 +1,34 @@
 import React, { useState } from "react";
 import "./TweetBox.css";
-import { Avatar, Button } from "@mui/material";
+// import { Avatar, Button } from "@mui/material";
+import { Button, IconButton } from "@chakra-ui/react";
 // import db from "./firebase";
+import axios from "axios";
 // import foto from "./asset/logo_Robin.png"
 
-function TweetBox() {
-  const [tweetMessage, setTweetMessage] = useState("");
-  const [tweetImage, setTweetImage] = useState("");
+function TweetBox({onTweet}) {
+  // const [tweetMessage, setTweetMessage] = useState("");
+  // const [tweetImage, setTweetImage] = useState("");
 
-//   const sendTweet = (e) => {
-//     e.preventDefault();
+  const [text, setText] = useState('');
+  const [tweets, setTweets] = useState([]);
 
-//     db.collection("posts").add({
-//       displayName: "Rafeh Qazi",
-//       username: "cleverqazi",
-//       verified: true,
-//       text: tweetMessage,
-//       image: tweetImage,
-//       avatar:
-//         "https://kajabi-storefronts-production.global.ssl.fastly.net/kajabi-storefronts-production/themes/284832/settings_images/rLlCifhXRJiT0RoN2FjK_Logo_roundbackground_black.png",
-//     });
 
-//     setTweetMessage("");
-//     setTweetImage("");
-//   };
+  const handleTweet = () => {
+    if (text) {
+      onTweet(text);
+      setText('');
+    }
+  };
+  // const handleTweet = (text) => {
+  //   axios.post('http://localhost:3002/tweets', { text }) 
+  //     .then((response) => {
+  //       setTweets([response.data, ...tweets]);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error posting tweet:', error);
+  //     });
+  //   };
 
   return (
     <div className="tweetBox">
@@ -31,22 +36,22 @@ function TweetBox() {
         <div className="tweetBox__input">
           {/* <Avatar src={foto}/> */}
           <input
-            // onChange={(e) => setTweetMessage(e.target.value)}
-            value={tweetMessage}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
             placeholder="What's happening?"
-            type="text"
+            // type="text"
           />
         </div>
-        <input
-          value={tweetImage}
+        {/* <input
+          // value={tweetImage}
         //   onChange={(e) => setTweetImage(e.target.value)}
           className="tweetBox__imageInput"
           placeholder="Optional: Enter image URL"
           type="text"
-        />
+        /> */}
 
         <Button
-        //   onClick={sendTweet}
+          onClick={handleTweet}
           type="submit"
           className="tweetBox__tweetButton"
         >

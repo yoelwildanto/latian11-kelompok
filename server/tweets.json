@@ -1,0 +1,20 @@
+{
+  "tweets": [
+    {
+      "text": "a",
+      "id": 1
+    },
+    {
+      "text": "hi",
+      "id": 2
+    },
+    {
+      "text": "aaasd",
+      "id": 3
+    },
+    {
+      "text": "halo",
+      "id": 4
+    }
+  ]
+}

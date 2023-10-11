@@ -3,17 +3,36 @@ import TweetBox from "./TweetBox";
 import Post from "./Post";
 import "./Feed.css";
 // import db from "./firebase";
-import FlipMove from "react-flip-move";
+// import FlipMove from "react-flip-move";
 import { Box } from "@chakra-ui/react";
+import Timeline from "./Tweets";
+import axios from "axios";
 
 function Feed() {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
+  const [tweets, setTweets] = useState([]);
 
-//   useEffect(() => {
-//     db.collection("posts").onSnapshot((snapshot) =>
-//       setPosts(snapshot.docs.map((doc) => doc.data()))
-//     );
-//   }, []);
+  useEffect(() => {
+    axios.get('http://localhost:3002/tweets') 
+      .then((response) => {
+        setTweets(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching tweets:', error);
+      });
+  }, []);
+
+  const handleTweet = (text) => {
+    axios.post('http://localhost:3002/tweets', { text }) 
+      .then((response) => {
+        setTweets([response.data, ...tweets]);
+      })
+      .catch((error) => {
+        console.error('Error posting tweet:', error);
+      });
+    };
+
+
 
   return (
     <div className="feed">
@@ -21,9 +40,9 @@ function Feed() {
         <h2>Home</h2>
       </div>
 
-      <TweetBox />
+      <TweetBox onTweet={handleTweet}/>
 
-      <FlipMove>
+      {/* <FlipMove> */}
         {/* {posts.map((post) => (
           <Post
             key={post.text}
@@ -35,10 +54,8 @@ function Feed() {
             image={post.image}
           />
         ))} */}
-        <Box border={"1px solid black"}>
-
-        </Box>
-      </FlipMove>
+        <Timeline tweets={tweets}/>
+      {/* </FlipMove> */}
     </div>
   );
 }
