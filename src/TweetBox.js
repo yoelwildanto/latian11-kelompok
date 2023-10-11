@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./TweetBox.css";
-import { Button, IconButton, Text } from "@chakra-ui/react";
+import { Button, IconButton, Input, Text } from "@chakra-ui/react";
+
 import axios from "axios";
 
 function TweetBox({loggedInUser}) {
@@ -28,8 +29,9 @@ function TweetBox({loggedInUser}) {
     <div className="tweetBox">
       <form>
         <div className="tweetBox__input">
-          <Text pt={"3px"} fontWeight={600}>{username}</Text>
-          <input
+          <Text px={"5px"} borderRadius={"5px"} bg={"#D3D3D3"} pt={"7px"} fontWeight={600}>{username}</Text>
+          <Input
+
             value={tweetText}
             onChange={(e) => setTweetText(e.target.value)}
             placeholder="What's happening?"
