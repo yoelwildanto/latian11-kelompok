@@ -20,10 +20,10 @@ const CobaNavbar = () => {
     <header>
             <h3>Logo</h3>
             {/* <nav className="LoginRegis" > */}
-                <div className="navItem">
+                {/* <div className="navItem">
                 <button onClick={handleToGoLogin}>Login</button>
                 <button onClick={handleToGoRegister}>Register</button>
-                </div>
+                </div> */}
                 {/* <button className="nav-btn close-btn" onClick={showNavBar}>
                 <FaTimes/>
                 </button> */}
