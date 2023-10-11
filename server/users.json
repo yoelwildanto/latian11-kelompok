@@ -1,74 +1,20 @@
 {
   "users": [
     {
-      "email": "yoel.wildantop@gmail.com",
+      "email": "yoel@gmail.com",
       "username": "yoel",
-      "password": "12345678",
-      "confirmPassword": "12345678",
+      "password": "qwertyuiop",
+      "confirmPassword": "qwertyuiop",
+      "isLogin": false,
       "id": 1
-    },
-    {
-      "email": "bambang@gmail.com",
-      "username": "bambang",
-      "password": "09876543",
-      "confirmPassword": "09876543",
-      "id": 2
-    },
-    {
-      "email": "miki@gmail.com",
-      "username": "miki",
-      "password": "09876543",
-      "confirmPassword": "09876543",
-      "id": 3
-    },
-    {
-      "email": "aa@gmail.com",
-      "username": "aa",
-      "password": "asdfghjkl",
-      "confirmPassword": "asdfghjkl",
-      "id": 4
-    },
-    {
-      "email": "yoel.wildantop@gmail.com",
-      "username": "yoel1",
-      "password": "qwertyuiop",
-      "confirmPassword": "qwertyuiop",
-      "id": 5
-    },
-    {
-      "email": "harijati@gmail.com",
-      "username": "harijati",
-      "password": "qwertyuiop",
-      "confirmPassword": "qwertyuiop",
-      "id": 6
-    },
-    {
-      "email": "kiki@gmail.com",
-      "username": "kiki",
-      "password": "1qazxsw2",
-      "confirmPassword": "1qazxsw2",
-      "id": 7
-    },
-    {
-      "email": "koko@gmail.com",
-      "username": "koko",
-      "password": "09876543",
-      "confirmPassword": "09876543",
-      "id": 8
     },
     {
       "email": "kaka@gmail.com",
       "username": "kaka",
-      "password": "pl,mkoijn",
-      "confirmPassword": "pl,mkoijn",
-      "id": 9
-    },
-    {
-      "email": "keke@gmail.com",
-      "username": "keke",
-      "password": "yhnmjuik,",
-      "confirmPassword": "yhnmjuik,",
-      "id": 10
+      "password": "asdfghjkl",
+      "confirmPassword": "asdfghjkl",
+      "isLogin": false,
+      "id": 2
     }
   ]
 }

@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import TweetBox from "./TweetBox";
 import Post from "./Post";
 import "./Feed.css";
-// import db from "./firebase";
-// import FlipMove from "react-flip-move";
 import { Box } from "@chakra-ui/react";
 import Timeline from "./Tweets";
 import axios from "axios";
 
 function Feed() {
-  // const [posts, setPosts] = useState([]);
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
@@ -32,6 +29,9 @@ function Feed() {
       });
     };
 
+    const loggedInUser = localStorage.getItem("loggedInUser");
+
+
 
 
   return (
@@ -40,23 +40,8 @@ function Feed() {
         <h2>Home</h2>
       </div>
 
-      <TweetBox onTweet={handleTweet}/>
-
-      {/* <FlipMove> */}
-
-        {/* {posts.map((post) => (
-          <Post
-            key={post.text}
-            displayName={post.displayName}
-            username={post.username}
-            verified={post.verified}
-            text={post.text}
-            avatar={post.avatar}
-            image={post.image}
-          />
-        ))} */}
-        <Timeline tweets={tweets}/>
-      {/* </FlipMove> */}
+      <TweetBox loggedInUser={loggedInUser}/>
+      <Timeline tweets={tweets}/>
 
     </div>
   );

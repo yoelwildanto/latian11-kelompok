@@ -39,7 +39,7 @@ function Register() {
       <Button colorScheme="green" mx={"auto"} w={"100px"} onClick={handleToGoLogin}>Login</Button>
       <Text fontWeight={800}>Register</Text>
       <Formik
-        initialValues={{ email: "", username: "", password: "", confirmPassword: "" }}
+        initialValues={{ email: "", username: "", password: "", confirmPassword: "", isLogin: false }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >

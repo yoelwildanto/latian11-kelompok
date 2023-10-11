@@ -5,6 +5,7 @@ import {BiHash, BiSolidHomeCircle} from "react-icons/bi"
 import {CiMail} from "react-icons/ci"
 import {CgMoreO} from "react-icons/cg"
 import {GoBell} from "react-icons/go"
+import { useNavigate } from "react-router-dom";
 // import {HiOutlineDotsCircleHorizontal} from "react-icons/hi"
 import {RiFileList2Line} from "react-icons/ri"
 import { Button } from "@chakra-ui/react";
@@ -14,6 +15,14 @@ import "./Sidebar.css"
 
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  // const handleToGoLogin = () => {
+  //   navigate('/login');
+  // };
+  const handleLogout = () => {
+    localStorage.removeItem("loggedInUser");
+    navigate('/login');
+  };
   return (
     <div className="sidebar">
         <BsTwitter className="sidebar__twitterIcon"/>
@@ -29,6 +38,7 @@ const Sidebar = () => {
       
 
         <Button colorScheme="green" mt={"40px"} w={"100%"} color={"white"} bg={"twitter.400"}>Tweet</Button>
+        <Button onClick={handleLogout}>Logout</Button>
 
     </div>
   )
