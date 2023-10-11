@@ -27,7 +27,9 @@ const Sidebar = () => {
         {/* <SidebarOption  Icon={""} text="Profile"/> */}
         <SidebarOption  Icon={CgMoreO} text="More"/>
       
-        <Button mt={"40px"} w={"100%"} color={"white"} bg={"twitter.400"}>Tweet</Button>
+
+        <Button colorScheme="green" mt={"40px"} w={"100%"} color={"white"} bg={"twitter.400"}>Tweet</Button>
+
     </div>
   )
 }
