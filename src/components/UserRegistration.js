@@ -23,7 +23,7 @@ function Register() {
   const handleSubmit = (values, { resetForm }) => {
     axios.post("http://localhost:3001/users", values).then(() => {
       resetForm();
-      navigate("/timeline");
+      navigate("/login");
     });
   };
 
