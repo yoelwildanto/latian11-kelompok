@@ -19,6 +19,7 @@ function TweetCard({ name, username, text, onDelete, onEdit }) {
       <Avatar size="md" name={name} src="" />
       <Text pt={"10px"}  fontSize="lg" fontWeight="bold">{name} (@{username})</Text>
       <Text fontWeight={600} p={"10px"}>{text}</Text>
+
       <Button mx={"5px"} leftIcon={<AiOutlineEdit />} colorScheme="teal" size="xs" onClick={onEdit}>
         Edit
       </Button>
