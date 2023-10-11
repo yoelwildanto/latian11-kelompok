@@ -7,10 +7,10 @@
   
   .sidebarOption:hover {
     background-color: rgb(31,178,90);
-
+    
     border-radius: 30px;
     color: var(--twitter-color);
-    transition: color 100ms ease-out;
+    transition: color 0.5s ease-out;
   }
   
   .sidebarOption > .MuiSvgIcon-root {
