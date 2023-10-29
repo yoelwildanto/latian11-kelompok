@@ -30,7 +30,7 @@ function Timeline({ tweets }) {
        
 
         <TweetCard key={index} name={tweet.name}
-        username={tweet.username} text={tweet.text}
+        username={tweet.username} text={tweet.tweet}
         // onDelete={() => handleDelete(tweet.id)}
         //   onEdit={() => handleEdit(tweet.id)} 
           />
