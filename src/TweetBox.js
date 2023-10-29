@@ -4,24 +4,19 @@ import { Button, IconButton, Input, Text } from "@chakra-ui/react";
 
 import axios from "axios";
 
-function TweetBox({loggedInUser}) {
-
+function TweetBox({ loggedInUser }) {
   // const [text, setText] = useState('');
   const [tweetText, setTweetText] = useState("");
   const handleTweetSubmit = () => {
     const newTweet = {
-      text: tweetText,
+      tweet: tweetText,
       username: loggedInUser,
-      timestamp: new Date().toISOString(),
+      // timestamp: new Date().toLocaleString(),
     };
-    axios.post("http://localhost:3002/tweets", newTweet)
-    .then((response) => {
+    axios.post("http://localhost:8080/twitter/tweet", newTweet).then((response) => {});
 
-    });
-
-  setTweetText("");
+    setTweetText("");
   };
-  
 
   const username = localStorage.getItem("loggedInUser");
 
@@ -29,18 +24,24 @@ function TweetBox({loggedInUser}) {
     <div className="tweetBox">
       <form>
         <div className="tweetBox__input">
-          <Text px={"5px"} borderRadius={"5px"} bg={"#D3D3D3"} pt={"7px"} fontWeight={600}>{username}</Text>
+          <Text
+            px={"5px"}
+            borderRadius={"5px"}
+            bg={"#D3D3D3"}
+            pt={"7px"}
+            fontWeight={600}
+          >
+            {username}
+          </Text>
           <Input
-
             value={tweetText}
             onChange={(e) => setTweetText(e.target.value)}
             placeholder="What's happening?"
           />
         </div>
-   
+
         <Button
           onClick={handleTweetSubmit}
-
           type="submit"
           className="tweetBox__tweetButton"
         >

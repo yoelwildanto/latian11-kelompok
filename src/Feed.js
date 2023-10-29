@@ -10,29 +10,29 @@ function Feed() {
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3002/tweets') 
+    axios
+      .get("http://localhost:8080/twitter/tweet")
       .then((response) => {
-        setTweets(response.data);
+        console.log(response.data);
+        setTweets(response.data?.data);
       })
       .catch((error) => {
-        console.error('Error fetching tweets:', error);
+        console.error("Error fetching tweets:", error);
       });
   }, []);
 
-  const handleTweet = (text) => {
-    axios.post('http://localhost:3002/tweets', { text }) 
+  const handleTweet = (tweet) => {
+    axios
+      .post("http://localhost:8080/twitter/tweet", { tweet })
       .then((response) => {
         setTweets([response.data, ...tweets]);
       })
       .catch((error) => {
-        console.error('Error posting tweet:', error);
+        console.error("Error posting tweet:", error);
       });
-    };
+  };
 
-    const loggedInUser = localStorage.getItem("loggedInUser");
-
-
-
+  const loggedInUser = localStorage.getItem("loggedInUser");
 
   return (
     <div className="feed">
@@ -40,9 +40,8 @@ function Feed() {
         <h2>Home</h2>
       </div>
 
-      <TweetBox loggedInUser={loggedInUser}/>
-      <Timeline tweets={tweets}/>
-
+      <TweetBox loggedInUser={loggedInUser} />
+      <Timeline tweets={tweets} />
     </div>
   );
 }

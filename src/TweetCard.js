@@ -8,7 +8,7 @@ import { Box, Avatar, Button, Text } from '@chakra-ui/react';
 
 
 
-function TweetCard({ username, text, timestamp }) {
+function TweetCard({ username, tweet, timestamp }) {
     // const { editTweet, deleteTweet } = useTweetContext();
     // const handleEdit = (updatedText) => {
     //     editTweet(tweet.id, updatedText);
@@ -28,8 +28,8 @@ function TweetCard({ username, text, timestamp }) {
     >
       <Avatar size="md" src="" />
       <Text pt={"10px"}  fontSize="lg" fontWeight="bold">(@{username})</Text>
-      <Text fontWeight={600} p={"10px"}>{text}</Text>
-      {/* <Text>Posted at: {new Date(timestamp).toLocaleString()}</Text> */}
+      <Text fontWeight={600} p={"10px"}>{tweet}</Text>
+      <Text>Posted at: {new Date(timestamp).toLocaleString()}</Text>
       {/* <Button mx={"5px"} leftIcon={<AiOutlineEdit />} colorScheme="teal" size="xs" onClick={handleEdit}>
 
 
