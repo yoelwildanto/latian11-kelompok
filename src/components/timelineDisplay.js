@@ -12,20 +12,24 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
+import {BsPersonCircle} from "react-icons/bs"
+import {GrAddCircle} from "react-icons/gr"
+import {BiSearch} from "react-icons/bi"
 
 const TimelineDisplay = () => {
- ;
+  const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+  const [isSmallerThan1280] = useMediaQuery("(max-width: 1280px)");
 
   const [tweet, setTweet] = useState([]);
   const [data, setData] = useState([]);
 
-  const email = localStorage.getItem("token");
+  const email = localStorage.getItem("loggedInUser");
   const Navigate = useNavigate();
 
   // input tweet
   const inputTimeline = async (email, posting) => {
     try {
-      await axios.post("http://localhost:8000/users", {
+      await axios.post("http://localhost:8000/twitter/tweet", {
         email,
         posting,
       });
@@ -46,11 +50,11 @@ const TimelineDisplay = () => {
     },
   });
 
-  // menampilkan tweet
+  // show tweet
   const newTweet = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/users");
-      setTweet(response.data);
+      const response = await axios.get("http://localhost:8000/twitter/tweet");
+      setTweet(response.data.data);
     } catch (err) {
       console.log(err);
     }
@@ -61,23 +65,25 @@ const TimelineDisplay = () => {
   }, [tweet]);
 
   const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("loggedInUser");
     Navigate("/login");
   };
 
-  // menampilkan data user
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/users");
-      setData(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+//   // menampilkan data user
+//   const fetchData = async () => {
+//     try {
+//       const response = await axios.get("http://localhost:3000/users");
+//       setData(response.data);
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
+
+  const reversedTweet = tweet.reverse();
 
   const newData = data.filter((input) => input.email !== email);
 
@@ -90,7 +96,6 @@ const TimelineDisplay = () => {
         sx={{ justifyContent: { lg: "center", xl: "center", "2xl": "center" } }}
       >
         <Box display="flex" h="100vh" justifyContent="center">
-         
           <Box
             w="45em"
             display="flex"
@@ -150,13 +155,10 @@ const TimelineDisplay = () => {
                 </Box>
               </form>
             </Box>
-            <Box
-              display="flex"
-              minH="75vh"
-            >
+            <Box display="flex" minH="75vh">
               <UnorderedList margin="0" w="100%">
-                {tweet.length > 0 &&
-                  tweet.map((item, index) => {
+                {reversedTweet.length > 0 &&
+                  reversedTweet.map((item, index) => {
                     return (
                       <Box
                         display="flex"
@@ -164,7 +166,7 @@ const TimelineDisplay = () => {
                         padding=".5em"
                       >
                         <Box fontSize="30px">
-                          <ion-icon name="person-circle-outline"></ion-icon>
+                          <BsPersonCircle/>
                         </Box>
                         <Box
                           display="flex"
@@ -220,18 +222,18 @@ const TimelineDisplay = () => {
                   padding=".5em"
                   backgroundColor="#eeeeee"
                 >
-                  <ion-icon name="search-outline"></ion-icon>
+                  <BiSearch/>
                   <Input variant="unstyled" w="180px" />
                 </Box>
                 <Box
                   display="flex"
                   flexDirection="column"
                   gap="10px"
-                  backgroundColor="#eeeeee"
+                  backgroundColor="rgb(31,178,90)"
                   padding=".5em"
                   borderRadius="10px"
                 >
-                  <Text fontSize="22px" fontWeight="600" color="#000000">
+                  <Text fontSize="22px" fontWeight="600" color="white">
                     Who to follow
                   </Text>
                   {newData.map((entry, index) => (
@@ -244,7 +246,7 @@ const TimelineDisplay = () => {
                       padding=".2em"
                       fontSize="18px"
                     >
-                      <ion-icon name="person-circle-outline"></ion-icon>
+                      <BsPersonCircle/>
                       <Box
                         w="85%"
                         display="flex"
@@ -252,7 +254,7 @@ const TimelineDisplay = () => {
                         justifyContent="space-between"
                       >
                         <Text key={index}>{entry.email}</Text>
-                        <ion-icon name="add-outline"></ion-icon>
+                        <GrAddCircle/>
                       </Box>
                     </Box>
                   ))}

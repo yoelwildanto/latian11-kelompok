@@ -25,8 +25,8 @@ function Login() {
       .then((response) => {
         if (response.data.length === 1) {
           resetForm();
-          const username = response.data[0].username; // Extract the username
-          localStorage.setItem("loggedInUser", username);
+          const email = response.data[0].email; // Extract the username
+          localStorage.setItem("loggedInUser", email);
           navigate("/timeline");
         } else {
           alert("Invalid username/email or password.");
